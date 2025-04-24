@@ -1,0 +1,17 @@
+name: Ejecutar pruebas
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Necesario para branch protection
+      - name: Instalar dependencias
+        run: |
+          npm install
+      - name: Ejecutar pruebas
+        run: |
+          npm test
